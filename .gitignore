@@ -1,0 +1,9 @@
+# created by virtualenv automatically
+.DS store
+bin/
+lib/
+
+db.sqlite3
+/migrations/__init__.py
+
+

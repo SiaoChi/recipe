@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<main class="formPage my-xl">
+        <div class="content-box">
+            <div class="formWrapper">
+            <br>
+            <form class="form" method="POST" action="">
+            {% csrf_token %}
+             <p>你確定要刪除"{{ recipe }}"?</p>
+                <br>
+            <a class="btn btn--sub btn--lg my--md" href="{% url 'home' %}">Back to Home</a>
+                <input class="btn btn--sub btn--lg my--md" type="submit" value="確定">
+
+            </form>
+            </div>
+        </div>
+</main>
+{% endblock %}

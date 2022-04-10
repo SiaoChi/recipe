@@ -1,0 +1,66 @@
+{% extends 'main.html' %}
+{% block content %}
+
+     <main class="projects">
+    <section class="hero-section text-center">
+      <div class="container container--narrow">
+        <div class="hero-section__box">
+          <h2>輸入<span>食材</span></h2>
+        </div>
+
+        <div class="hero-section__search">
+          <form class="form" action="#" method="get">
+            <div class="form__field">
+              <label for="formInput#search">Search By Recipes </label>
+              <input class="input input--text" id="formInput#search" type="text" name="search_query"  value= ""
+                        placeholder = '輸入食材或食譜名'>
+            </div>
+
+            <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Search Result: DevList -->
+    <section class="projectsList">
+      <div class="container">
+        <div class="grid grid--three">
+        {% for recipe in recipes %}
+
+
+          <div class="column">
+            <div class="card project">
+              <a href="{% url 'single-recipe' recipe.id %}" class="project">
+                <img class="project__thumbnail" src="{{ recipe.featured_image.url }}" alt="recipe picture" />
+                <div class="card__body">
+                  <h3 class="project__title">{{ recipe.name }}</h3>
+                  <p><a class="project__author" >{{ recipe.author }}</a></p>
+{#                    <div class="project__tags">#}
+{#                         {% for tag in recipe.tags.all %}#}
+{#                        <span class = "tag tag--pill tag--main">#}
+{#                             <small> {{ tag.name }}</small>#}
+{#                         </span>#}
+{#                          {% endfor %}#}
+
+                    <div class="project__tags">
+{#                          解了超久終於成功了..這是把foreignkey拿給parent model的方法 #}
+                           {% for material in recipe.material_set.all %}
+                        <span class = "tag tag--pill tag--main">
+                             <small> {{ material.name}}</small>
+                         </span>
+                          {% endfor %}
+
+                     </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+         </div>
+    </section>
+
+{#      {% include 'pagination.html' with queryset=projects custom_range=custom_range %}#}
+{#    </main>#}
+
+
+{% endblock %}
