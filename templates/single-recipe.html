@@ -1,0 +1,86 @@
+{% extends 'main.html' %}
+
+
+    {% block content %}
+
+     <main class="singleProject my-md">
+    <div class="container">
+      <div class="layout">
+        <div class="column column--1of3">
+
+          <div class="singleProject__toolStack">
+
+          <h4 class="singleProject__subtitle">食材</h4>
+           {% for material in materials %}
+            <span class="tag tag--pill tag--sub tag--lg">
+
+              <small>{{material.name}}{{ material.unit }}</small>
+            </span>
+             {% endfor %}
+        <br>
+          <br>
+          <br>
+          <h3 class="singleProject__subtitle">調味料</h3>
+            {% for sauce in sauces %}
+            <span class="tag tag--pill tag--sub tag--lg">
+                <small>{{sauce.name}}{{ sauce.unit }}</small>
+            </span>
+            {% endfor %}
+          </div>
+
+        {% if recipe.source_link %}
+          <a class="singleProject__liveLink" href="{{ recipe.source_link }}" target="_blank"><i class="im im-external-link"></i>參考連結
+          </a>
+        {% endif %}
+
+        </div>
+        <div class="column column--2of3" >
+{#          <img class="singleProject__preview" src="{{ recipe.featured_image.url }}" alt="portfolio thumbnail" />#}
+
+
+{#           輪播圖#}
+{#            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">#}
+{#          <div class="carousel-inner">#}
+            <div>
+              <img src="{{ recipe.featured_image.url }}" class="singleProject__preview" alt="recipe method">
+            </div>
+{#            {% for item in images %}#}
+{#            <div class="carousel-item">#}
+{#            <img src="{{ item.image.url }}" class="singleProject__preview" alt="recipe method">#}
+{#            </div>#}
+{#          {% endfor %}#}
+{##}
+{##}
+{#          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">#}
+{#            <span class="carousel-control-prev-icon" aria-hidden="true"></span>#}
+{#            <span class="visually-hidden">Previous</span>#}
+{#          </button>#}
+{#          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">#}
+{#            <span class="carousel-control-next-icon" aria-hidden="true"></span>#}
+{#            <span class="visually-hidden">Next</span>#}
+{#          </button>#}
+{#        </div>#}
+
+
+
+            <a href="" class="singleProject__developer">作者：{{ recipe.author }}</a>
+          <h2 class="singleProject__title">{{ recipe.name }}</h2>
+          <h3 class="singleProject__subtitle">作法</h3>
+          <div class="singleProject__info">
+            {{ recipe.detail  | safe | linebreaks}}
+              <br>
+              <br>
+              <br>
+              <br>
+          </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+
+
+{% endblock %}

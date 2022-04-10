@@ -1,0 +1,118 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+{% if page == 'register' %}
+<div>
+ <div>
+        <br>
+        <br>
+        <br>
+      <div>
+        <br>
+        <br>
+        <br>
+    </div>
+    </div>
+<div class="auth">
+
+      <div class = "card">
+        <div class="auth__header text-center">
+{#          <a href="/">#}
+{#            <img src={% static 'images/logo.png' %} alt="icon" />#}
+{#          </a>#}
+
+          <h3>註冊</h3>
+          <p>加入會員擁有自己的食譜書</p>
+        </div>
+
+        <form method="POST" action="{% url 'register' %}" class="form auth__form">
+          {% csrf_token  %}
+
+
+         {% for field in form %}
+             <div class="form__field">
+            <label for="formInput#text">{{ field.label}}</label>
+            {{ field }}
+
+             {% if field.help_text %}
+                <small>{{ field.help_text }}</small>
+             {% endif %}
+
+             {% for error in field.errors %}
+                 <p style="color:red;">{{ error }}</p>
+             {% endfor %}
+
+
+             </div>
+         {% endfor %}
+
+    <div class="auth__actions">
+            <input class="btn btn--sub btn--lg" type="submit" value="送出" />
+          </div>
+
+        </form>
+        <div class="auth__alternative">
+          <p>已是會員？</p>
+          <a href="{% url 'login' %}">登入</a>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+{% else %}
+
+    <div class="auth">
+      <div class="card">
+        <div class="auth__header text-center">
+{#          <a href="/">#}
+{#            <img src="{% static 'images/icon.svg' %}" alt="icon" />#}
+{#          </a>#}
+          <h3>登入</h3>
+          <p>主廚, 歡迎你!</p>
+        </div>
+
+        <form action="{% url 'login' %}" method="POST" class="form auth__form">
+          {% csrf_token %}
+            <!-- Input Username -->
+          <div class="form__field">
+            <label for="formInput#text">使用者名稱: </label>
+            <input
+              class="input input--text"
+              id="formInput#text"
+              type="text"
+              name="username"
+              placeholder="Enter your username..."
+            />
+          </div>
+
+          <!-- Input:Password -->
+          <div class="form__field">
+            <label for="formInput#password">密碼: </label>
+            <input
+              class="input input--password"
+              id="formInput#passowrd"
+              type="password"
+              name="password"
+              placeholder="••••••••"
+            />
+          </div>
+          <div class="auth__actions">
+            <input class="btn btn--sub btn--lg" type="submit" value="Log In" />
+            <a href="forgetpassword.html">Forget Password?</a>
+          </div>
+        </form>
+        <div class="auth__alternative">
+          <p>尚未註冊會員？</p>
+          <a href="{% url 'register' %}">立即註冊</a>
+        </div>
+      </div>
+    </div>
+
+
+
+{% endif %}
+
+
+{% endblock %}
