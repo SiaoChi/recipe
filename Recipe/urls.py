@@ -18,6 +18,7 @@ from django.urls import path, include
 from myRecipe import views
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
@@ -28,6 +29,16 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     #參考網址 https://blog.twshop.asia/django-%E6%89%80%E8%A6%8B%E5%8D%B3%E6%89%80%E5%BE%97-%E5%AF%8C%E6%96%87%E6%9C%AC%E7%B7%A8%E8%BC%AF%E5%99%A8-ckeditor/
     # path('ckeditor/', include('ckeditor_uploader.urls')),
+
+    # 以下django內建的auth_views for reset password
+    path('reset_password/', auth_views.PasswordResetView.as_view(template_name='reset_password.html'),
+         name="reset_password"),
+    path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(template_name='reset_password_sent.html'),
+         name="password_reset_done"),
+    path('user/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='reset.html'),
+         name='password_reset_confirm'),
+    path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name='reset_password_complete.html'),
+         name='password_reset_complete'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

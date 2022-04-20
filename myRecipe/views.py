@@ -3,6 +3,7 @@ from .models import Recipe, Material ,Sauce ,RecipeImage, User, Tag
 # from django.contrib.auth import get_user_model
 from Recipe.form import RecipeForm, MaterialFormSet, SauceFormSet
 from django.contrib import messages
+from .utils import searchRecipe, searchMyRecipe
 
 
 
@@ -11,11 +12,13 @@ from django.contrib import messages
 
 #首頁 食譜總覽
 def Recipes(request):
-     recipes = Recipe.objects.all()
-     tags = Tag.objects.all()
+
+     recipes, search_query = searchRecipe(request)
+     # recipes = Recipe.objects.all()
+     # tags = Tag.objects.all()
 
 
-     context = {'recipes':recipes , 'tags':tags}
+     context = {'recipes':recipes , 'search_query':search_query}
      return render(request, 'home.html', context)
 
 
@@ -65,7 +68,7 @@ def CreateRecipe(request):
                 sauce_formset.save()
 
         messages.success(request, 'was created!')
-        return redirect('/')
+        return redirect('my-recipe')
 
     else:
         form = RecipeForm()
@@ -107,7 +110,7 @@ def UpdateRecipe(request,pk):
                 sauce_formset.save()
 
         messages.success(request, 'was updated!')
-        return redirect('/')
+        return redirect('my-recipe')
 
 
     context = {'form' : form , 'material_formset': material_formset,
@@ -120,8 +123,15 @@ def DeleteRecipe(request, pk):
     recipe = Recipe.objects.get(id=pk)
     if request.method =="POST":
         recipe.delete()
-        return redirect('home')
+        return redirect('my-recipe')
 
     context={'recipe':recipe}
     return render(request,'delete-recipe.html',context)
 
+def UserRecipe(request):
+    recipes, search_query = searchMyRecipe(request)
+    #以下一到utils
+    # user = request.user
+    # recipes = user.recipe_set.all()
+    context = {'recipes':recipes , 'search_query':search_query }
+    return render(request,'my-recipe.html', context)

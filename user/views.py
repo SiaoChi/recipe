@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 
+
 def registerUser(request):
     page = 'register'
     form = registerForm()
@@ -21,8 +22,12 @@ def registerUser(request):
             user.save()
             messages.success(request, '註冊成功')
             login(request, user)
-
             return redirect('home')
+
+
+
+
+
 
         else:
             messages.error(
@@ -71,10 +76,6 @@ def logoutUser(request):
     return redirect('login')
 
 
-def UserRecipe(request):
-    user = request.user
-    recipes = user.recipe_set.all()
-    context = {'recipes':recipes }
-    return render(request,'my-recipe.html', context)
+
 
 

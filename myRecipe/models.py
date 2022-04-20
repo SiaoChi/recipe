@@ -3,6 +3,8 @@ import modulefinder
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
 # from ckeditor.fields import RichTextField
 # from ckeditor_uploader.fields import RichTextUploadingField
 
@@ -55,3 +57,4 @@ class Sauce(models.Model):
 class RecipeImage(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete= models.CASCADE)
     image = models.ImageField(null=True,blank=True, default="images/default.jpg", upload_to="images/userupload")
+
