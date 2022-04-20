@@ -5,7 +5,7 @@
     <section class="hero-section text-center">
       <div class="container container--narrow">
         <div class="hero-section__box">
-          <h2>輸入<span>食材</span></h2>
+          <h2>我的<span>食譜</span></h2>
         </div>
 
         <div class="hero-section__search">
@@ -49,12 +49,18 @@
                              <small> {{ material.name}}</small>
                          </span>
                           {% endfor %}
-
+                    <br>
+                    <div>
+                        <a class="tag tag--pill tag--main settings__btn" href="{% url 'update-recipe' recipe.id %}"><i class="im im-edit"></i> Edit</a>
+                        <a class="tag tag--pill tag--main settings__btn" href="{% url 'delete-recipe' recipe.id %}"><i class="im im-x-mark-circle-o"></i>Delete</a>
+                    </div>
                      </div>
                 </div>
               </a>
             </div>
           </div>
+
+
         {% endfor %}
          </div>
     </section>

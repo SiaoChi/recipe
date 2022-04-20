@@ -2,8 +2,14 @@
 .DS store
 bin/
 lib/
+myRecipe/Recipe/settings.py
 
 db.sqlite3
 /migrations/__init__.py
 
 
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

@@ -27,8 +27,8 @@ SECRET_KEY = 'django-insecure-05nyykc+i3w(h%214wf-0ji-)#c@5ltgr#lo=gf#yhd+w35trs
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTS = ['localhost','127.0.0.1','chichigou-recipe.herokuapp.com']
+ALLOWED_HOSTS = ['RecipeTest-env.eba-gamrfsqk.us-west-2.elasticbeanstalk.com']
 
 # Application definition
 
@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_htmx',
     'myRecipe.apps.MyrecipeConfig',
+    'user.apps.UserConfig',
     'django_summernote' ,
+    'storages'
 
     # 'ckeditor',
     # 'ckeditor_uploader',
@@ -87,10 +89,21 @@ WSGI_APPLICATION = 'Recipe.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'recipes',
+        'USER':'postgres',
+        'PASSWORD':'a2040178',
+        'HOST':'database-1.ctqn1mf4a8bp.ap-southeast-1.rds.amazonaws.com',
+        'PORT':'5432'
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -123,6 +136,12 @@ USE_I18N = True
 
 USE_TZ = True
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS =True
+EMAIL_HOST_USER = 'chichigou.work@gmail.com'
+EMAIL_HOST_PASSWORD = 'z2040178'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
@@ -144,3 +163,18 @@ STATIC_ROOT= os.path.join(BASE_DIR , 'staticfiles')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID='AKIASZI3PGDX5YFWSDFX'
+AWS_SECRET_ACCESS_KEY='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'
+AWS_STORAGE_BUCKET_NAME='recipe-singapo-test'
+AWS_QUERYSTRING_AUTH=False
+AWS_S3_FILE_OVERWRITE=False
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+if os.getcwd() == '/app':
+    DEBUG = False
+
+
