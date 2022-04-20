@@ -1,5 +1,3 @@
-
-
- web: gunicorn --pythonpath Recipe.wsgi
+ web: gunicorn --pythonpath Recipe.wsgi --log-file -
 
 
