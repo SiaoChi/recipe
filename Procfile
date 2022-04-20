@@ -1,2 +1,5 @@
-web:gunicorn Recipe.wsgi --log-file -
+
+
+web: gunicorn --pythonpath mysite myrecipe.wsgi
+
 
