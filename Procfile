@@ -1,5 +1,5 @@
 
 
-web: gunicorn --pythonpath mysite myrecipe.wsgi
+ web: gunicorn --pythonpath Recipe.wsgi
 
 
