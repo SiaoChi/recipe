@@ -44,11 +44,11 @@
 
                     <div class="project__tags">
 {#                          解了超久終於成功了..這是把foreignkey拿給parent model的方法 #}
-                           {% for material in recipe.material_set.all %}
-                        <span class = "tag tag--pill tag--main">
-                             <small> {{ material.name}}</small>
-                         </span>
-                          {% endfor %}
+{#                           {% for material in recipe.material_set.all %}#}
+{#                        <span class = "tag tag--pill tag--main">#}
+{#                             <small> {{ material.name}}</small>#}
+{#                         </span>#}
+{#                          {% endfor %}#}
                     <br>
                     <div>
                         <a class="tag tag--pill tag--main settings__btn" href="{% url 'update-recipe' recipe.id %}"><i class="im im-edit"></i> Edit</a>

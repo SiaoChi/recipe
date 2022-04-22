@@ -130,7 +130,7 @@ def DeleteRecipe(request, pk):
 
 def UserRecipe(request):
     recipes, search_query = searchMyRecipe(request)
-    #以下一到utils
+    #以下到utils
     # user = request.user
     # recipes = user.recipe_set.all()
     context = {'recipes':recipes , 'search_query':search_query }
