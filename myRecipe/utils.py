@@ -14,7 +14,7 @@ def searchRecipe(request):
 
     recipes = Recipe.objects.distinct().filter(
         Q(name__icontains = search_query)|
-        Q(material__icontains= search_query) |
+        Q(material__name__icontains= search_query) |
         Q(author__icontains= search_query)|
         Q(tags__in=tags)
                                   )
@@ -34,7 +34,7 @@ def searchMyRecipe(request):
     user = request.user
     recipes = user.recipe_set.distinct().filter(
         Q(name__icontains = search_query)|
-        Q(material__icontains= search_query) |
+        Q(material__name__icontains= search_query) |
         Q(author__icontains= search_query)|
         Q(tags__in=tags)
                                   )
