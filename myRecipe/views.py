@@ -45,9 +45,9 @@ def CreateRecipe(request):
 
     if request.method == "POST":
         form = RecipeForm(request.POST,request.FILES)
-        print('test')
+        # print('test')
         # print(form)
-        print(request.FILES)
+        # print(request.FILES)
 
         if form.is_valid():
             #要記得form不能直接儲存，需要認列user
