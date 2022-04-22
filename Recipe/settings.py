@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 import myRecipe.apps
+from django.core.cache.backends.base import BaseCache
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -177,4 +179,9 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # if os.getcwd() == '/app':
 #     DEBUG = False
 
-
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/var/tmp/django_cache',
+    }
+}
