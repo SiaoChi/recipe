@@ -46,7 +46,7 @@
 {#                          解了超久終於成功了..這是把foreignkey拿給parent model的方法 #}
                            {% for material in recipe.material_set.all %}
                         <span class = "tag tag--pill tag--main">
-                             <small> {{ material.name}}</small>
+                             <small> {{ material.name| slice:4 }} </small>
                          </span>
                           {% endfor %}
 

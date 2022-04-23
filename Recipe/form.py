@@ -49,13 +49,13 @@ MaterialFormSet = inlineformset_factory(Recipe, Material ,fields= ('name','unit'
 
 
 
-SauceFormSet = inlineformset_factory(Recipe, Sauce ,fields= ('name','unit',),extra=1, can_delete=False ,
+SauceFormSet = inlineformset_factory(Recipe, Sauce ,fields= ('name',),extra=1, can_delete=False ,
                                    widgets = {'name':forms.TextInput(attrs={'class': 'input'}),
-                                                 'unit':forms.TextInput(attrs={'class': 'input'}),
+
 
                                                     },
                                     labels = {
                                         'name': '名稱',
-                                        'unit': '份量'
-                                    }
-                                     )
+
+                                    })
+
