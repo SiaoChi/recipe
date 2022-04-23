@@ -10,14 +10,13 @@ def searchRecipe(request):
     if request.GET.get('search_query'):
         search_query = request.GET.get('search_query')
 
-    tags = Tag.objects.filter(name__icontains=search_query)
+    # tags = Tag.objects.filter(name__icontains=search_query)
 
     recipes = Recipe.objects.distinct().filter(
         Q(name__icontains = search_query)|
         Q(material__name__icontains= search_query) |
-        Q(author__icontains= search_query)|
-        Q(tags__in=tags)
-                                  )
+        Q(author__icontains= search_query))
+        # Q(tags__in=tags)
 
     context = {'recipes':recipes, 'search_query':search_query}
     return recipes, search_query
@@ -35,8 +34,8 @@ def searchMyRecipe(request):
     recipes = user.recipe_set.distinct().filter(
         Q(name__icontains = search_query)|
         Q(material__name__icontains= search_query) |
-        Q(author__icontains= search_query)|
-        Q(tags__in=tags)
+        Q(author__icontains= search_query)
+        # Q(tags__in=tags)
                                   )
 
     context = {'recipes':recipes, 'search_query':search_query}
