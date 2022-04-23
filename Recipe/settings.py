@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 import myRecipe.apps
-from django.core.cache.backends.base import BaseCache
+# from django.core.cache.backends.base import BaseCache
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-05nyykc+i3w(h%214wf-0ji-)#c@5ltgr#lo=gf#yhd+w35trs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = ['localhost','127.0.0.1','chichigou-recipe.herokuapp.com']
 ALLOWED_HOSTS = ['myrecipe.herokuapp.com','127.0.0.1','0.0.0.0']
@@ -72,16 +72,16 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR,'templates')]
         ,
         'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
+         'OPTIONS': {
+        'loaders': [
+            ('django.template.loaders.cached.Loader', [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+                'path.to.custom.Loader',
+            ]),
+        ],
     },
-]
+}]
 
 WSGI_APPLICATION = 'Recipe.wsgi.application'
 
@@ -96,7 +96,9 @@ DATABASES = {
         'USER':'postgres',
         'PASSWORD':'a2040178',
         'HOST':'database-1.ctqn1mf4a8bp.ap-southeast-1.rds.amazonaws.com',
-        'PORT':'5432'
+        'PORT':'5432',
+        'CONN_MAX_AGE': 60,
+
     }
 }
 
@@ -179,9 +181,9 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # if os.getcwd() == '/app':
 #     DEBUG = False
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': '/var/tmp/django_cache',
-    }
-}
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+#         'LOCATION': '/var/tmp/django_cache',
+#     }
+# }
