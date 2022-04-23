@@ -96,8 +96,7 @@ DATABASES = {
         'USER':'postgres',
         'PASSWORD':'a2040178',
         'HOST':'database-1.ctqn1mf4a8bp.ap-southeast-1.rds.amazonaws.com',
-        'PORT':'5432',
-        'CONN_MAX_AGE': 60
+        'PORT':'5432'
     }
 }
 
