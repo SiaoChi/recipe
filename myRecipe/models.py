@@ -28,8 +28,8 @@ class Recipe(models.Model):
 
     def save(self, *args, **kwargs):
         instance = super(Recipe, self).save(*args, **kwargs)
-        image = Image.open(instance.photo.path)
-        image.save(instance.photo.path, quality=20, optimize=True)
+        image = Image.open(instance.featured_image.path)
+        image.save(instance.featured_image.path, quality=20, optimize=True)
         return instance
 
 class Tag(models.Model):
