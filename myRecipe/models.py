@@ -3,6 +3,7 @@ import modulefinder
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
+from PIL import Image
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 # from ckeditor.fields import RichTextField
@@ -24,6 +25,12 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        instance = super(Recipe, self).save(*args, **kwargs)
+        image = Image.open(instance.photo.path)
+        image.save(instance.photo.path, quality=20, optimize=True)
+        return instance
 
 class Tag(models.Model):
     name = models.CharField(max_length=200)
@@ -54,6 +61,7 @@ class Sauce(models.Model):
     def __str__(self):
         return self.name
 
+#沒使用到
 class RecipeImage(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete= models.CASCADE)
     image = models.ImageField(null=True,blank=True, default="images/default.jpg", upload_to="images/userupload")
