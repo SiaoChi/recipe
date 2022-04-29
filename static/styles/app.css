@@ -9,6 +9,7 @@
 }
 
 .card {
+  width: 100%;
   border: 2px solid var(--color-light);
 
 
@@ -684,7 +685,7 @@ img {
 @media screen and (min-width: 650px) {
   .auth > .card {
     padding: 5rem 8rem;
-    width: 95%;
+    width: 100%;
     max-width: 65rem;
 
   }
