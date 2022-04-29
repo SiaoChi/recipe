@@ -24,7 +24,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myRecipe.urls')),
-    path('recipes/', include('myRecipe.urls')),
+    # path('recipes/', include('myRecipe.urls')),
     path('user/', include('user.urls')),
     path('summernote/', include('django_summernote.urls')),
     #參考網址 https://blog.twshop.asia/django-%E6%89%80%E8%A6%8B%E5%8D%B3%E6%89%80%E5%BE%97-%E5%AF%8C%E6%96%87%E6%9C%AC%E7%B7%A8%E8%BC%AF%E5%99%A8-ckeditor/
