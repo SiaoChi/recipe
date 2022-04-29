@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-05nyykc+i3w(h%214wf-0ji-)#c@5ltgr#lo=gf#yhd+w35trs
 DEBUG = True
 
 # ALLOWED_HOSTS = ['localhost','127.0.0.1','chichigou-recipe.herokuapp.com']
-ALLOWED_HOSTS = ['myrecipe.herokuapp.com','127.0.0.1','0.0.0.0']
+ALLOWED_HOSTS = ['myrecipe.herokuapp.com','127.0.0.1:8000','0.0.0.0']
 
 # Application definition
 
