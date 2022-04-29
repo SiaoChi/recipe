@@ -53,6 +53,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -61,7 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_htmx.middleware.HtmxMiddleware',
+
 ]
 
 ROOT_URLCONF = 'Recipe.urls'
@@ -85,6 +88,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Recipe.wsgi.application'
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
+        'LOCATION': '127.0.0.1:11211',
+        'TIMEOUT': 60,
+        'OPTIONS': {
+            'MAX_ENTRIES': 1000 }
+                }
+        }
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
