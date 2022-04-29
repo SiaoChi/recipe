@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 import uuid
 from PIL import Image
+import os
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 # from ckeditor.fields import RichTextField
@@ -26,10 +27,13 @@ class Recipe(models.Model):
     def __str__(self):
         return self.name
 
-    def save(self, *args, **kwargs):
+    def save(featured_image, verbose = False):
+        filepath = os.path.join(os.getcwd(),
+                                featured_image)
         instance = super(Recipe, self).save(*args, **kwargs)
-        image = Image.open(instance.featured_image.path)
-        image.save(instance.featured_image.path, quality=70, optimize=True)
+        image = Image.open(filepath)
+        image.save("Compressed_"+featured_image,
+                 "JPEG", quality=50, optimize=True)
 
 class Tag(models.Model):
     name = models.CharField(max_length=200)
