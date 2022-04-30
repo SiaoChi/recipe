@@ -182,14 +182,13 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # if os.getcwd() == '/app':
 #     DEBUG = False
 
-CACHE_MIDDLEWARE_SECONDS = 60
+CACHE_MIDDLEWARE_SECONDS = 20
 # CACHES = {
 #     'default': {
 #         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
 #         'LOCATION': 'var/tmp/Recipe_cache',
 #     }
 # }
-
 
 CACHES = {
     'default': {
