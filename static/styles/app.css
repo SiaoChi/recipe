@@ -19,8 +19,9 @@
 
 
 
-img svg {
+img  {
     vertical-align: middle;
+    width: 100%;
 }
 
 .tag > i.im {
