@@ -58,6 +58,7 @@ def CreateRecipe(request):
             #要記得form不能直接儲存，需要認列user
             recipe = form.save(commit=False)
             recipe.user = request.user   #request.user就能知道創造的人是誰
+
             recipe.save()
 
 

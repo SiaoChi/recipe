@@ -27,13 +27,7 @@ class Recipe(models.Model):
     def __str__(self):
         return self.name
 
-    def save(featured_image, verbose = False):
-        filepath = os.path.join(os.getcwd(),
-                                featured_image)
-        instance = super(Recipe, self).save(*args, **kwargs)
-        image = Image.open(filepath)
-        image.save("Compressed_"+featured_image,
-                 "JPEG", quality=50, optimize=True)
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=200)
