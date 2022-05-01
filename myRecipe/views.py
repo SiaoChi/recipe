@@ -3,7 +3,7 @@ from .models import Recipe
 # from django.contrib.auth import get_user_model
 from Recipe.form import RecipeForm, MaterialFormSet, SauceFormSet
 from django.contrib import messages
-from .utils import searchRecipe, searchMyRecipe
+from .utils import searchRecipe, searchMyRecipe,paginatorRecipe
 from django.views.decorators.cache import cache_page
 from PIL import Image
 
@@ -18,11 +18,12 @@ from PIL import Image
 def Recipes(request):
 
      recipes, search_query = searchRecipe(request)
+     custom_range, recipes = paginatorRecipe(request, recipes, 9)
      # recipes = Recipe.objects.all()
      # tags = Tag.objects.all()
 
 
-     context = {'recipes':recipes , 'search_query':search_query}
+     context = {'recipes':recipes , 'search_query':search_query,  'custom_range':custom_range}
      return render(request, 'home.html', context)
 
 
@@ -59,9 +60,6 @@ def CreateRecipe(request):
             #要記得form不能直接儲存，需要認列user
             recipe = form.save(commit=False)
             recipe.user = request.user   #request.user就能知道創造的人是誰
-
-
-
             recipe.save()
 
 
