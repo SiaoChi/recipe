@@ -12,8 +12,10 @@
 
         {% if page == queryset.number%}
         <li><a href="?page={{page}}" class="btn page-link btn--sub" >{{page}}</a></li>
+
         {% else %}
-        <li><a href="?page={{page}}" class="btn page-link" >{{page}}</a></li>
+        <li><a href="?page={{page}}" class="btn page-link " >{{page}}</a></li>
+
         {% endif %}
         {% endfor %}
 
