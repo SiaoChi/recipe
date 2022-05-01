@@ -7,8 +7,7 @@ from PIL import Image
 import os
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
-# from ckeditor.fields import RichTextField
-# from ckeditor_uploader.fields import RichTextUploadingField
+
 
 
 # Create your models here.
@@ -24,9 +23,13 @@ class Recipe(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
 
+    def save(self, *args, **kwargs):
+        instance = super(Recipe, self).save(*args, **kwargs)
+        img = Image.open(instance.featured_image.path)
+        img.save(instance.featured_image.path, quality=20, optimize=True)
+
     def __str__(self):
         return self.name
-
 
 
 class Tag(models.Model):

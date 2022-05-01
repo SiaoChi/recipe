@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
-from .models import Recipe, Material ,Sauce ,RecipeImage, User, Tag
+from .models import Recipe
 # from django.contrib.auth import get_user_model
 from Recipe.form import RecipeForm, MaterialFormSet, SauceFormSet
 from django.contrib import messages
 from .utils import searchRecipe, searchMyRecipe
 from django.views.decorators.cache import cache_page
+from PIL import Image
 
 
 
@@ -58,6 +59,8 @@ def CreateRecipe(request):
             #要記得form不能直接儲存，需要認列user
             recipe = form.save(commit=False)
             recipe.user = request.user   #request.user就能知道創造的人是誰
+
+
 
             recipe.save()
 
