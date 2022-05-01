@@ -43,7 +43,6 @@ def searchMyRecipe(request):
 
 def paginatorRecipe(request, recipes, results):
     page = request.GET.get('page')  # page等於網頁上的 /?page="num"
-    results = 9
     paginator = Paginator(recipes, results)
 
     # 因為user enter from Nav, but nav is not integer page (url=project), so we have to direct Pagenotinterget to page 1
@@ -56,15 +55,15 @@ def paginatorRecipe(request, recipes, results):
         page = paginator.num_pages  # num_pages = 最後一頁
         recipes = paginator.page(page)
 
-    leftIndex = (int(page) - 1)
+    leftIndex = (int(page) - 3)
 
     if leftIndex < 1:
         leftIndex = 1
 
-    rightIndex = (int(page) + 2)
+    rightIndex = (int(page) + 4)
 
     if rightIndex > paginator.num_pages:
-        rightIndex = paginator.num_pages
+        rightIndex = paginator.num_pages + 1
 
     custom_range = range(leftIndex, rightIndex)
 

@@ -14,7 +14,7 @@ from django.dispatch import receiver
 
 class Recipe(models.Model):
     user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
-    featured_image = models.ImageField(null=True,blank=True, default="images/default.jpg", upload_to="images/userupload")
+    featured_image = models.ImageField(null=True,blank=True, default="images/images/default.jpg", upload_to="images/userupload")
     name = models.CharField(max_length=200)
     author = models.CharField(max_length=200,blank= True, null=True)
     tags = models.ManyToManyField('Tag',blank= True)
