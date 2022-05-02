@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='recipe',
             name='featured_image',
-            field=models.ImageField(blank=True, default='images/default.jpg', null=True, upload_to=myRecipe.models.user_directory_path),
+            field=models.ImageField(blank=True, default='images/default.jpg', null=True, upload_to="images/userupload"),
         ),
     ]
