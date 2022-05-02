@@ -2,11 +2,25 @@
 .DS store
 bin/
 lib/
-Recipe/settings.py
+
+
+# ide
+.idea/
+*.iml
+
+# tmp data
+*.swp
+*~
+temporary/
+
+# data
+dataset/
+output/
+models/
 
 db.sqlite3
 /migrations/__init__.py
-
+/Recipe/settings.py
 
 
 # Elastic Beanstalk Files
