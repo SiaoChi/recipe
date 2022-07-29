@@ -21,7 +21,7 @@ models/
 db.sqlite3
 migrations/__init__.py
 Recipe/settings.py
-var/tmp/Recipe_cache
+var/tmp/Recipe_cache/
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
