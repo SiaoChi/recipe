@@ -4,7 +4,7 @@ from .models import Recipe
 from Recipe.form import RecipeForm, MaterialFormSet, SauceFormSet
 from django.contrib import messages
 from .utils import searchRecipe, searchMyRecipe,paginatorRecipe
-from django.views.decorators.cache import cache_page
+# from django.views.decorators.cache import cache_page
 from PIL import Image
 
 
@@ -14,7 +14,7 @@ from PIL import Image
 # Create your views here.
 
 #首頁 食譜總覽
-@cache_page(60 * 15)
+# @cache_page(60 * 15)
 def Recipes(request):
 
      recipes, search_query = searchRecipe(request)
@@ -28,7 +28,7 @@ def Recipes(request):
 
 
 #瀏覽單一食譜
-@cache_page(60 * 15)
+# @cache_page(60 * 15)
 def singleRecipe(request,pk):
     recipe = Recipe.objects.get(id=pk)
     tags = recipe.tags.all()
@@ -44,7 +44,7 @@ def singleRecipe(request,pk):
     return render(request, 'single-recipe.html', context)
 
 #創造食譜表單
-@cache_page(60 * 15)
+# @cache_page(60 * 15)
 def CreateRecipe(request):
     form = RecipeForm()
     material_formset = MaterialFormSet()
@@ -92,7 +92,7 @@ def CreateRecipe(request):
 
 
 #修改食譜表單
-@cache_page(60 * 15)
+# @cache_page(60 * 15)
 def UpdateRecipe(request,pk):
     recipe = Recipe.objects.get(id=pk)
     form = RecipeForm(instance=recipe)
@@ -136,7 +136,7 @@ def DeleteRecipe(request, pk):
     context={'recipe':recipe}
     return render(request,'delete-recipe.html',context)
 
-@cache_page(60 * 15)
+# @cache_page(60 * 15)
 def UserRecipe(request):
     recipes, search_query = searchMyRecipe(request)
     #以下到utils
