@@ -22,8 +22,8 @@
 {#            <li class="header__menuItem"><a href="#">購物清單</a></li>#}
             <li class="header__menuItem"><a href="{% url 'logout' %}" class="btn btn--sub">登出</a></li>
             {% else %}
-            <li class="header__menuItem"><a href="{% url 'login' %}">新增食譜書</a></li>
-            <li class="header__menuItem"><a href="{% url 'login' %}" class="btn btn--sub">註冊</a></li>
+            <li class="header__menuItem"><a href="{% url 'login' %}">註冊新增食譜</a></li>
+            <li class="header__menuItem"><a href="{% url 'login' %}" class="btn btn--sub">登入</a></li>
             {% endif %}
         </ul>
       </nav>
