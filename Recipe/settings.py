@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     'myRecipe.apps.MyrecipeConfig',
     'user.apps.UserConfig',
     'django_summernote' ,
-    'storages'
+    'storages',
+    'django_cleanup',
+
 
     # 'ckeditor',
     # 'ckeditor_uploader',
