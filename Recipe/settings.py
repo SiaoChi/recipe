@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'django_summernote' ,
     'storages',
-    'django_cleanup',
+    # 'django_cleanup',
 
 
     # 'ckeditor',
