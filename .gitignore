@@ -2,7 +2,7 @@
 .DS store
 bin/
 lib/
-
+staticfiles
 
 # ide
 .idea/
