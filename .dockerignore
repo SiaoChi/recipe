@@ -1,0 +1,50 @@
+# flyctl launch added from .gitignore
+# created by virtualenv automatically
+**/.DS store
+**/bin
+**/lib
+**/staticfiles
+
+# ide
+**/.idea
+**/*.iml
+
+# tmp data
+**/*.swp
+**/*~
+**/temporary
+
+# data
+**/dataset
+**/output
+**/models
+
+**/db.sqlite3
+#migrations/__init__.py
+#Recipe/settings.py
+#var/tmp/Recipe_cache/
+
+# Elastic Beanstalk Files
+**/.elasticbeanstalk/*
+!**/.elasticbeanstalk/*.cfg.yml
+!**/.elasticbeanstalk/*.global.yml
+
+# flyctl launch added from .idea/.gitignore
+# Default ignored files
+.idea/shelf
+.idea/workspace.xml
+# Editor-based HTTP Client requests
+.idea/httpRequests
+# Datasource local storage ignored files
+.idea/dataSources
+.idea/dataSources.local.xml
+
+# flyctl launch added from Recipe/.idea/.gitignore
+# Default ignored files
+Recipe/.idea/shelf
+Recipe/.idea/workspace.xml
+# Editor-based HTTP Client requests
+Recipe/.idea/httpRequests
+# Datasource local storage ignored files
+Recipe/.idea/dataSources
+Recipe/.idea/dataSources.local.xml
