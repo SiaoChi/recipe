@@ -43,7 +43,7 @@ def searchMyRecipe(request):
 
 def paginatorRecipe(request, recipes, results):
     page = request.GET.get('page')  # page等於網頁上的 /?page="num"
-    recipes = recipes.order_by('id')
+    recipes = recipes.order_by('id') #要加入order_by不然會出現unorderedObjectListWarning的error
     paginator = Paginator(recipes, results)
 
     # 因為user enter from Nav, but nav is not integer page (url=project), so we have to direct Pagenotinterget to page 1

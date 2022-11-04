@@ -27,12 +27,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-05nyykc+i3w(h%214wf-0ji-)#c@5ltgr#lo=gf#yhd+w35trs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1','0.0.0.0','chichi-recipe.fly.dev']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://chichi-recipe.fly.dev/'
+    'https://*.fly.dev/'
 ]
 
 # Application definition
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_htmx',
+    # 'django_htmx',
     'myRecipe.apps.MyrecipeConfig',
     'user.apps.UserConfig',
     'django_summernote' ,
