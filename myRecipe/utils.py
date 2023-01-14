@@ -12,6 +12,7 @@ def searchRecipe(request):
 
     # tags = Tag.objects.filter(name__icontains=search_query)
 
+    #所有的食譜
     recipes = Recipe.objects.distinct().filter(
         Q(name__icontains = search_query)|
         Q(material__name__icontains= search_query) |
@@ -31,6 +32,9 @@ def searchMyRecipe(request):
 
     tags = Tag.objects.filter(name__icontains=search_query)
     user = request.user
+    #使用者自己的食譜
+    #如果沒有distinct()會有重複出現同一個食譜的狀況
+
     recipes = user.recipe_set.distinct().filter(
         Q(name__icontains = search_query)|
         Q(material__name__icontains= search_query) |

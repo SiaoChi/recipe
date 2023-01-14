@@ -188,8 +188,6 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 #     DEBUG = False
 
 CACHE_MIDDLEWARE_SECONDS = 20
-''
-''
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
