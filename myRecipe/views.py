@@ -6,7 +6,7 @@ from django.contrib import messages
 from .utils import searchRecipe, searchMyRecipe,paginatorRecipe
 # from django.views.decorators.cache import cache_page
 from PIL import Image
-#hello
+#hello world
 
 
 
