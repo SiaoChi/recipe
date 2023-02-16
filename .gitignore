@@ -13,7 +13,7 @@ var
 *.swp
 *~
 temporary/
-setting.py
+Recipe/setting.py
 # data
 dataset/
 output/
