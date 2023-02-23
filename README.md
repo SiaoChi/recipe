@@ -25,7 +25,7 @@ python manage.py collectstatic --noinput
 ```
 7. run server
 ```
-python manage.py
+python manage.py runserver
 ```
 
 <h2>Usage</h2>
