@@ -144,3 +144,21 @@ def UserRecipe(request):
     # recipes = user.recipe_set.all()
     context = {'recipes':recipes , 'search_query':search_query }
     return render(request,'my-recipe.html', context)
+
+# Recipe save to csv
+import csv
+from django.http import HttpResponse
+
+def ExportCSV(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="recipes.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['id', 'name', 'detail'])
+
+    recipes = Recipe.objects.all()
+    for recipe in recipes:
+        writer.writerow([recipe.id,recipe.name , recipe.detail])
+
+    return response
+

@@ -11,6 +11,7 @@ urlpatterns = [
     path('update-recipe/<str:pk>', views.UpdateRecipe, name='update-recipe'),
     path('delete-recipe/<str:pk>', views.DeleteRecipe, name='delete-recipe'),
     path('my-recipe/', views.UserRecipe, name ='my-recipe'),
+    path('export-recipes-csv/',views.ExportCSV , name = 'export-csv'),
 
 
 

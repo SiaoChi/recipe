@@ -44,12 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'django_htmx',
     'myRecipe.apps.MyrecipeConfig',
     'user.apps.UserConfig',
     'django_summernote' ,
     'storages',
     'django_cleanup',
+    'django_extensions',
 
 
     # 'ckeditor',
